@@ -96,3 +96,59 @@ function debounce(func, delay) {
     };
 }
 ```
+
+
+##In React
+- we can see in **app.js** in **debouncing-in-react** react project
+- we can just uncomment and run the code 
+- **NB: We need to remember that deboncing takes a fucntion and duration of time** 
+```jsx
+
+import { useCallback } from 'react';
+
+const useDebounce = (callback, delay) => {
+  const debouncedCallback = useCallback(() => {
+    let handler;
+    return (...args) => {
+      if (handler) {
+        clearTimeout(handler);
+      }
+      handler = setTimeout(() => {
+        callback(...args);
+      }, delay);
+    };
+  }, [callback, delay]);
+
+  return debouncedCallback();
+};
+
+export default useDebounce;
+
+```
+
+###with lodash
+```jsx
+
+import { useState, useCallback } from 'react';
+import _ from 'lodash';
+
+const useDebounce = (callback, delay) => {
+  const debouncedCallback = useCallback(
+    _.debounce((...args) => {
+      callback(...args);
+    }, delay),
+    [callback, delay]
+  );
+
+  return debouncedCallback;
+};
+
+export default useDebounce;
+
+
+```
+
+
+
+
+
