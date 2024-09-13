@@ -98,10 +98,12 @@ function debounce(func, delay) {
 ```
 
 
-##In React
+## In React
 - we can see in **app.js** in **debouncing-in-react** react project
 - we can just uncomment and run the code 
-- **NB: We need to remember that deboncing takes a fucntion and duration of time** 
+- **NB: We need to remember that deboncing takes a fucntion and duration of time**
+
+### With js only
 ```jsx
 
 import { useCallback } from 'react';
@@ -126,7 +128,7 @@ export default useDebounce;
 
 ```
 
-###with lodash
+### With lodash
 ```jsx
 
 import { useState, useCallback } from 'react';
